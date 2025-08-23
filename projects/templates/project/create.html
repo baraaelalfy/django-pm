@@ -1,8 +1,22 @@
+{% extends 'base.html' %}
 {% load i18n %}
 {% block content %}
-<form method='post'>
-    {% csrf_token %}
-    {{form}}
-    <input type="submit" value="Submit"/>
-</form>
-{% endblock content %}
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="card col-md-6 px-4 py-4">
+                <div class="card-header">
+                    <h3 class="mb-4 py-2">{% trans 'New Project' %}</h3>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button class="btn btn-success mt-4">
+                            {% translate 'Create' %}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
